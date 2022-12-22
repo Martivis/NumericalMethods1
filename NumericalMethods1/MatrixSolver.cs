@@ -75,8 +75,8 @@ namespace NumericalMethods1
 
 		public decimal[] Solve()
 		{
-			Console.WriteLine("\nSource\n");
-			Print();
+			//Console.WriteLine("\nSource\n");
+			//Print();
 			// STEP 1
 
 			uint row = 0;
@@ -119,8 +119,10 @@ namespace NumericalMethods1
 			DivideLine(_centralDiagonal[row + 1], row + 1);
 
 			// /STEP 1
+#if DEBUG
 			Console.WriteLine("\n/STEP 1\n");
 			Print();
+#endif
 			// STEP 2
 
 			row = _size - 2;
@@ -153,8 +155,10 @@ namespace NumericalMethods1
 			_freeTerms[row] = _freeTerms[row] - divider * _freeTerms[_size - 1];
 
 			// /STEP 2
+#if DEBUG
 			Console.WriteLine("\n/STEP 2\n");
 			Print();
+#endif
 			// STEP 3
 
 			for (row = _size - 3; row >= 2; row--)
@@ -180,12 +184,15 @@ namespace NumericalMethods1
 			_freeTerms[row] = _freeTerms[row] - divider * _freeTerms[row + 1];
 
 			// /STEP 3
+#if DEBUG
 			Console.WriteLine("\n/STEP 3\n");
 			Print();
+#endif
 			// STEP 4
 
 			DivideLine(_centralDiagonal[row], row);
-			divider = _leftColumn[row];
+			divider = _leftColumn[row + 1];
+			_leftColumn[row + 1] = 0;
 			_upperDiagonal[row] = 0;
 			_freeTerms[row + 1] = _freeTerms[row + 1] - divider * _freeTerms[row];
 
@@ -197,8 +204,10 @@ namespace NumericalMethods1
 			}
 
 			// /STEP 4
+#if DEBUG
 			Console.WriteLine("\n/STEP 4\n");
 			Print();
+#endif
 			// STEP 5
 
 			for (row = 0; row < _size; row++)

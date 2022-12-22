@@ -7,8 +7,8 @@
 			bool run = true;
 			while (run)
 			{
-				//try
-				//{
+				try
+				{
 					uint size = 10;
 					int minValue = -10;
 					int maxValue = 10;
@@ -35,13 +35,13 @@
 						Console.WriteLine($"{expectedXValues[i],15} | {actualXValues[i],-15}");
 					}
 					Console.WriteLine($"Accuracy: {accuracy}");
-				//}
-				//catch(Exception ex)
-				//{
-				//	Console.ForegroundColor = ConsoleColor.Red;
-				//	Console.WriteLine(ex.ToString());
-				//	Console.ResetColor();
-				//}
+				}
+				catch(Exception ex)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine(ex.ToString());
+					Console.ResetColor();
+				}
 
 				Console.Write("Continue? (y/n) >> ");
 				if (Console.ReadLine() != "y")
